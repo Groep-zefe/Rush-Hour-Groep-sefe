@@ -1,11 +1,11 @@
 # Rush-Hour-Groep-zefe
 
 # class-board
-size
+- size
 
 # class-cars
-length
-orientation
-row
-column
-ID
+- length
+- orientation
+- row
+- column
+- ID
