@@ -5,11 +5,30 @@ class Cars:
     def __init__(self, car_id, car_orie, car_row, car_col, car_len):
         self.id = car_id
         self.orientation = car_orie
-        self.row = car_row
-        self.col = car_col
+        self.row = int(car_row) - 1
+        self.col = int(car_col) - 1
         self.length = car_len
+    
+    def coordinates(self): 
 
-   
+        self.coordinates_one = [self.row, self.col]
+
+        if self.orientation == "H":
+            self.coordinates_two = [self.row, self.col + 1]
+        else: 
+            self.coordinates_two = [self.row + 1, self.col]
+        
+        if self.length == "3":
+            if self.orientation == "H": 
+                self.coordinates_three = [self.row, self.col + 2]
+            else: 
+                self.coordinates_three = [self.row + 1 , self.col]
+            
+            return [self.id, self.coordinates_one, self.coordinates_two, self.coordinates_three]
+
+        return [self.id, self.coordinates_one, self.coordinates_two]
+
+
 class Board:
     def __init__(self):
         self.cars = {}
@@ -28,7 +47,12 @@ class Board:
 
 
     def load_board(self):
-        
+        cars = self.cars
+        car_keys = cars.keys()
+
+        for key in car_keys:
+             print(cars[key].coordinates())
+
         # Bron: https://www.youtube.com/watch?v=JnujQxAqAIM&ab_channel=C0nti
         board = [["|   |" for rows in range(self.board_size)] for colums in range(self.board_size)]
 
@@ -45,18 +69,9 @@ class Board:
             print(" ".join(i))
             print("----- " * self.board_size)
         
-        
-
-            
-
-    
+           
 if __name__ == "__main__":
     board = Board()
-    cars = board.load_cars()
-    car_keys = cars.keys()
-
+    board.load_cars()
     board.load_board()
-
-    # for key in car_keys:
-    #     print(cars[key].row)
 
