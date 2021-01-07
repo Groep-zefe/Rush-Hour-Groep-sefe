@@ -8,10 +8,8 @@ class Cars:
         self.row = car_row
         self.col = car_col
         self.length = car_len
-    
-    def coordinates(self):
 
-
+   
 class Board:
     def __init__(self):
         self.cars = {}
@@ -28,13 +26,27 @@ class Board:
                         self.board_size = int(row[2])
         return self.cars
 
+
     def load_board(self):
-        for car in self.cars:
-            thiscar = car 
-            car_coordinates = car.coordinates
+        
+        # Bron: https://www.youtube.com/watch?v=JnujQxAqAIM&ab_channel=C0nti
+        board = [["|   |" for rows in range(self.board_size)] for colums in range(self.board_size)]
 
         for rows in range(self.board_size):
-            print((self.board_size) * "#")
+            for colums in range(self.board_size):
+                if board[rows][colums] == 0:
+                    board[rows][colums] = "|   |"
+                else:
+                    car = "A"
+                    board[rows][colums] = f"| {car} |"
+
+        for i in board:
+            print("----- " * self.board_size)
+            print(" ".join(i))
+            print("----- " * self.board_size)
+        
+        
+
             
 
     
