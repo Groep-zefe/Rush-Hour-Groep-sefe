@@ -1,6 +1,5 @@
 import csv
 
-
 class Cars:
     def __init__(self, car_id, car_orie, car_row, car_col, car_len):
         self.id = car_id
@@ -33,8 +32,8 @@ class Board:
         self.cars = {}
         self.board_size = 0 
 
-    def load_cars(self):
-        with open ("boards/Rushhour6x6_1.csv", "r") as csvfile:
+    def load_cars(self, filename):
+        with open ( filename, "r") as csvfile:
             datafile = csv.reader(csvfile)
 
             for row in datafile: 
@@ -79,8 +78,3 @@ class Board:
             print("----- " * self.board_size)
         
            
-if __name__ == "__main__":
-    board = Board()
-    board.load_cars()
-    board.load_board()
-
