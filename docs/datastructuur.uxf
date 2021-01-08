@@ -1,0 +1,33 @@
+<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>71</x><y>90</y><w>210</w><h>160</h></coordinates><panel_attributes>Class: Cars
+--
+INIT
+- id (char)
+- orientation (char)
+- row (int)
+- col (int)
+- length (int)
+--
+COORDINATES
+- return coordinates (1,2(,3))</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>351</x><y>90</y><w>210</w><h>160</h></coordinates><panel_attributes>Class: Board
+--
+INIT
+cars (list)
+board_size (int)
+--
+LOAD_CARS
+- appends Cars object to 'cars'-list
+--
+LOAD_BOARD
+- visualize board with car-ID</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>21</x><y>60</y><w>590</w><h>210</h></coordinates><panel_attributes>board.py</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>21</x><y>300</y><w>590</w><h>220</h></coordinates><panel_attributes>rushhour.py</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>70</x><y>330</y><w>210</w><h>170</h></coordinates><panel_attributes>Class: Solve_game
+--
+INIT
+- game
+--
+load_game
+- loads requested file
+--
+MOVE
+- moves the cars to find a solution
+--
+SOLUTION
+- saves solution in correct file</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>10</x><y>0</y><w>160</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;140;10</additional_attributes></element><element><id>Relation</id><coordinates><x>270</x><y>90</y><w>100</w><h>70</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>80;50;40;50;10;10</additional_attributes></element></diagram>
