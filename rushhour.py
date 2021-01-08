@@ -23,6 +23,8 @@ class Solve_game:
 
     def solution(self): 
         i = 0 
+
+        test_solution = [ ['A', '1'], ['C', '-2'], ['G', '-1']]
         
         while True:  
             my_file = Path(f'solutions/solution_game_{self.game}.{i}.csv')
@@ -33,6 +35,7 @@ class Solve_game:
         with open(f'solutions/solution_game_{self.game}.{i}.csv', 'w') as csv_file:
             writer = csv.writer(csv_file)
             writer.writerow(['car', 'move']) 
+            writer.writerows(test_solution)
 
 
 if __name__ == "__main__":
