@@ -61,17 +61,19 @@ class Board:
         key = "A"
         list_coordinates = (cars[key].coordinates())
         car_id = list_coordinates[0]
-        board[list_coordinates[1][0]][list_coordinates[1][1]] = f'| {car_id} |'
-        board[list_coordinates[2][0]][list_coordinates[2][1]] = f'| {car_id} |'
+        board[list_coordinates[1][0]][list_coordinates[1][1]] = car_id
+        board[list_coordinates[2][0]][list_coordinates[2][1]] = car_id
 
         if len(list_coordinates) == 4: 
-            board[list_coordinates[3][0]][list_coordinates[3][1]] = f'| {car_id} |'
+            board[list_coordinates[3][0]][list_coordinates[3][1]] = car_id
 
        
         for rows in range(self.board_size):
             for colums in range(self.board_size):
                 if board[rows][colums] == 0:
                     board[rows][colums] = "|   |"
+                else: 
+                    board[rows][colums] = f'| {board[rows][colums]} |'
 
         for i in board:
             print("----- " * self.board_size)
