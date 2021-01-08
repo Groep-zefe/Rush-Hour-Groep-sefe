@@ -10,7 +10,6 @@ class Cars:
         self.length = car_len
     
     def coordinates(self): 
-
         self.coordinates_one = [self.row, self.col]
 
         if self.orientation == "H":
@@ -22,7 +21,7 @@ class Cars:
             if self.orientation == "H": 
                 self.coordinates_three = [self.row, self.col + 2]
             else: 
-                self.coordinates_three = [self.row + 1 , self.col]
+                self.coordinates_three = [self.row + 2 , self.col]
             
             return [self.id, self.coordinates_one, self.coordinates_two, self.coordinates_three]
 
@@ -40,7 +39,7 @@ class Board:
 
             for row in datafile: 
                 if row[0] != "car":
-                    self.cars[row[0]] = Cars(row[0], row[1], row[2], row[3], row[4])
+                    self.cars[row[0]] = Cars(row[0], row[1], row[3], row[2], row[4])
                     if int(row[2]) > self.board_size:
                         self.board_size = int(row[2])
         return self.cars
@@ -57,15 +56,14 @@ class Board:
         cars = self.cars
         car_keys = cars.keys()
 
-        #for key in car_keys:
-        key = "A"
-        list_coordinates = (cars[key].coordinates())
-        car_id = list_coordinates[0]
-        board[list_coordinates[1][0]][list_coordinates[1][1]] = car_id
-        board[list_coordinates[2][0]][list_coordinates[2][1]] = car_id
+        for key in car_keys:
+            list_coordinates = (cars[key].coordinates())
+            car_id = list_coordinates[0]
+            board[list_coordinates[1][0]][list_coordinates[1][1]] = car_id
+            board[list_coordinates[2][0]][list_coordinates[2][1]] = car_id
 
-        if len(list_coordinates) == 4: 
-            board[list_coordinates[3][0]][list_coordinates[3][1]] = car_id
+            if len(list_coordinates) == 4: 
+                board[list_coordinates[3][0]][list_coordinates[3][1]] = car_id
 
        
         for rows in range(self.board_size):
