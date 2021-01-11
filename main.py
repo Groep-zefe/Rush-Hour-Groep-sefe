@@ -22,12 +22,12 @@ if __name__ == "__main__":
 
     # def load_game(self): 
     board = Board()
-    if self.game <= 3: # Hoe zat het ook alweer met self. in de main?
-        board.load_cars(f"boards/Rushhour6x6_{self.game}.csv")
-    elif self.game <= 6: 
-        board.load_cars(f"boards/Rushhour9x9_{self.game}.csv")
+    if game_name <= 3:
+        board.load_cars(f"boards/Rushhour6x6_{game_name}.csv")
+    elif game_name <= 6: 
+        board.load_cars(f"boards/Rushhour9x9_{game_name}.csv")
     else: 
-        board.load_cars(f"boards/Rushhour12x12_{self.game}.csv")
+        board.load_cars(f"boards/Rushhour12x12_{game_name}.csv")
         
         # return board.load_board()
 
