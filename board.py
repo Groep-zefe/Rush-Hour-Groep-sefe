@@ -8,6 +8,7 @@ class Board:
         self.cars = {}
         self.board_size = 0
         self.board = [[]]
+        self.all_moves = []
 
 
     def load_cars(self, filename):
@@ -58,7 +59,7 @@ class Board:
         for rows in range(self.board_size):
             for colums in range(self.board_size):
                 if self.board[rows][colums] == "_":
-                    empty_spaces.append( [rows, colums])
+                    empty_spaces.append([rows, colums])
         
         random.shuffle(empty_spaces)
         for space in range(len(empty_spaces)):
@@ -106,6 +107,9 @@ class Board:
             self.cars[move_car].row = self.cars[move_car].row + move_coordinates
         else:
             self.cars[move_car].col = self.cars[move_car].col + move_coordinates
+
+        self.all_moves.append([move_car, move_coordinates])
+
 
 
 
