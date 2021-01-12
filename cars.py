@@ -6,6 +6,7 @@ class Cars:
         self.col = int(car_col) - 1
         self.length = car_len
     
+    
     def coordinates(self): 
         self.coordinates_one = [self.row, self.col]
 
