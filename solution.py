@@ -6,6 +6,7 @@ class Solution:
 
     def __init__(self, game):
         self.game = game
+        self.moves = []
         
     def solution(self): 
         i = 0 
