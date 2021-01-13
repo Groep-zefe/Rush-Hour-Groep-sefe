@@ -54,8 +54,8 @@ class Board:
         
     def move(self):
         empty_spaces = []
-        move_car = 0 
-        move_coordinates = 0
+        move_car = {}
+        random_keys = []
         for rows in range(self.board_size):
             for colums in range(self.board_size):
                 if self.board[rows][colums] == "_":
@@ -65,50 +65,57 @@ class Board:
         for space in range(len(empty_spaces)):
             empty_temp = empty_spaces.pop()
 
-            if empty_temp[0] + 1 < self.board_size:              
-                if self.board[empty_temp[0] + 1][empty_temp[1]] != "_":
-                    temp_car = self.board[empty_temp[0] + 1][empty_temp[1]]
-                    orientation = (self.cars[temp_car].orientation)
-                    if orientation == "V":
-                        move_coordinates = -1
-                        move_car = temp_car
-
             if empty_temp[1] + 1 < self.board_size:
                 if self.board[empty_temp[0]][empty_temp[1] + 1] != "_":
                     temp_car = self.board[empty_temp[0]][empty_temp[1] + 1]
                     orientation = (self.cars[temp_car].orientation)
                     if orientation == "H":
-                        move_coordinates = -1
-                        move_car = temp_car
-
-
-            if empty_temp[0] - 1 > 0:  
-                if self.board[empty_temp[0] - 1][empty_temp[1]] != "_":
-                    temp_car = self.board[empty_temp[0] - 1][empty_temp[1]]
-                    orientation = (self.cars[temp_car].orientation)
-                    if orientation == "V":
-                        move_coordinates = 1
-                        move_car = temp_car
-
+                        move_car[temp_car] = - 1
+            
+            
             if empty_temp[1] - 1  > 0:
                 if self.board[empty_temp[0]][empty_temp[1] - 1] != "_":
                     temp_car = self.board[empty_temp[0]][empty_temp[1] - 1]
                     orientation = (self.cars[temp_car].orientation)
                     if orientation == "H":
-                        move_coordinates = 1
-                        move_car = temp_car
-            
-            if move_car != 0: 
+                        move_car[temp_car] = 1
+             
+        
+            if empty_temp[0] + 1 < self.board_size:              
+                if self.board[empty_temp[0] + 1][empty_temp[1]] != "_":
+                    temp_car = self.board[empty_temp[0] + 1][empty_temp[1]]
+                    orientation = (self.cars[temp_car].orientation)
+                    if orientation == "V":
+                        move_car[temp_car] = - 1
+          
+         
+            if empty_temp[0] - 1 > 0:  
+                if self.board[empty_temp[0] - 1][empty_temp[1]] != "_":
+                    temp_car = self.board[empty_temp[0] - 1][empty_temp[1]]
+                    orientation = (self.cars[temp_car].orientation)
+                    if orientation == "V":
+                        move_car[temp_car] = 1
+
+            if len(move_car.keys()) > 0:
                 break
 
-        car_orientation = self.cars[move_car].orientation
+        
+        random_car = random.choice(list(move_car.keys()))
+                    
+        car_orientation = self.cars[random_car].orientation
 
         if car_orientation == "V":
-            self.cars[move_car].row = self.cars[move_car].row + move_coordinates
+            self.cars[random_car].row = self.cars[random_car].row + move_car[random_car]
         else:
-            self.cars[move_car].col = self.cars[move_car].col + move_coordinates
+            self.cars[random_car].col = self.cars[random_car].col + move_car[random_car]
+        
+        print(f'the moved car is {random_car}')
 
-        self.all_moves.append([move_car, move_coordinates])
+        self.all_moves.append([random_car, move_car[random_car]])
+
+
+
+        
 
 
 

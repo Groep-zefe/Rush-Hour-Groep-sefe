@@ -1,7 +1,7 @@
 import csv
 from sys import argv
 
-
+from cars import Cars
 from board import Board
 from solution import Solution
 
@@ -29,9 +29,18 @@ else:
     board.load_cars(f"boards/Rushhour12x12_{game_name}.csv")
 
 board.load_board()
-board.move()
-board.load_board()
 
-solve_game = Solution(game_name)
+winning_coordinate = board.board_size - 2 
 
-#solve_game.solution()
+red_car = board.cars['X']
+
+while red_car.col != winning_coordinate:
+
+    board.move()
+    board.load_board()
+    print("\n") 
+
+
+solve_game = Solution(game_name, board.all_moves)
+
+solve_game.solution()
