@@ -29,17 +29,21 @@ else:
     board.load_cars(f"boards/Rushhour12x12_{game_name}.csv")
 
 board.load_board()
+board.visualize_board()
 
 winning_coordinate = board.board_size - 2 
 
 red_car = board.cars['X']
 
-while red_car.col != winning_coordinate:
-
-    board.move()
-    board.load_board()
-    print("\n") 
-
+while board.arch_count < 5:
+    while red_car.col != winning_coordinate:
+        board.check_move()
+        board.move()
+        board.load_board()
+        board.visualize_board()
+        print("\n")
+        
+board.visualize_board()
 
 solve_game = Solution(game_name, board.all_moves)
 
