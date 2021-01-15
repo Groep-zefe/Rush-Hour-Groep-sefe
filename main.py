@@ -31,7 +31,7 @@ winning_coordinate = board.board_size - 2
 
 red_car = board.cars['X']
 
-while red_car.col != winning_coordinate:
+while red_car.col != winning_coordinate: 
     board.check_move()
     board.move()
     board.load_board()
@@ -42,4 +42,4 @@ board.visualize_board()
 
 solve_game = Solution(game_name, board.all_moves)
 
-solve_game.solution()
+#solve_game.solution()

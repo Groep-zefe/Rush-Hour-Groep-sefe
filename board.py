@@ -12,6 +12,7 @@ class Board:
         self.move_car = {}
         self.board_arch = []
         self.random_car = None
+        self.temp_coordinates = None
 
 
     def load_cars(self, filename):
@@ -46,7 +47,7 @@ class Board:
             if len(list_coordinates) == 4: 
                 self.board[list_coordinates[3][0]][list_coordinates[3][1]] = car_id
 
-       
+    
         for rows in range(self.board_size):
             for colums in range(self.board_size):
                 if self.board[rows][colums] == 0:
@@ -59,18 +60,29 @@ class Board:
             self.board_arch.append(self.board)
             if len(self.board_arch) > 1:
                 self.all_moves.append([self.random_car, self.move_car[self.random_car]])
-        else: 
-            no_moves += 1
+        else:  
+            self.board = self.board_arch[-1]
 
-        if no_moves > 5: 
-            for i in range(10):
-                del self.board_arch[-1]
+            car_orientation = self.cars[self.random_car].orientation
+
+            if car_orientation == "V":
+                self.cars[self.random_car].row = self.temp_coordinates
+            else:
+                self.cars[self.random_car].col = self.temp_coordinates
         
+            no_moves += 1 
+            
+        
+        if no_moves > 5: 
+            for i in range(20):
+                 del self.board_arch[-1]
+
+
     def visualize_board(self):    
         for i in self.board:
             print(" ".join(i))
         
-        print(f'the moved car is {self.random_car}')
+        print(f'try to move car {self.random_car}')
         
         
     def check_move(self):
@@ -133,7 +145,5 @@ class Board:
             self.temp_coordinates = self.cars[self.random_car].col
             self.cars[self.random_car].col = self.cars[self.random_car].col + self.move_car[self.random_car]
         
-       
-
 
      
