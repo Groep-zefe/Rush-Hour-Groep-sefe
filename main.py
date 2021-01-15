@@ -42,4 +42,4 @@ board.visualize_board()
 
 solve_game = Solution(game_name, board.all_moves)
 
-#solve_game.solution()
+solve_game.solution()
