@@ -1,3 +1,11 @@
 # Rush-Hour-Groep-zefe
 
-## Informatie over opdracht
+# class-board
+- size
+
+# class-cars
+- length
+- orientation
+- row
+- column
+- ID
