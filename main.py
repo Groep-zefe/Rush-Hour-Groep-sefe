@@ -35,6 +35,8 @@ while red_car.col != winning_coordinate:
     board.check_move()
     board.move()
     board.load_board()
+    board.check_board()
+    board.load_board()
     board.visualize_board()
     print("\n")
         

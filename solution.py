@@ -11,7 +11,7 @@ class Solution:
         
     def solution(self): 
         i = 0 
-
+        print(len(self.results))
         while True:  
             my_file = Path(f'solutions/solution_game_{self.game}.{i}.csv')
             if my_file.is_file():
@@ -20,6 +20,6 @@ class Solution:
 
         with open(f'solutions/solution_game_{self.game}.{i}.csv', 'w') as csv_file:
             writer = csv.writer(csv_file)
-            writer.writerow(['car', 'move']) 
+            writer.writerow(['car', 'move', len(self.results)]) 
             writer.writerows(self.results)
             
