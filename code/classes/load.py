@@ -1,4 +1,4 @@
-from board import Board
+from code.classes.board import Board
 
 class Load_game():
     def __init__(self):

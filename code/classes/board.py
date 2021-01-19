@@ -3,7 +3,7 @@ import random
 import copy
 import math
 
-from cars import Cars
+from code.classes.cars import Cars
 
 class Board:
     def __init__(self):

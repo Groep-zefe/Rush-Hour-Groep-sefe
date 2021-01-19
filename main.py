@@ -2,10 +2,10 @@ import csv
 from sys import argv
 import os
 
-from cars import Cars
-from board import Board
-from solution import Solution
-from load import Load_game
+from code.classes.cars import Cars
+from code.classes.board import Board
+from code.classes.solution import Solution
+from code.classes.load import Load_game
 
 
 # Check command line arguments

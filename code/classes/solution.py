@@ -2,7 +2,8 @@ import csv
 import time
 
 from pathlib import Path
-from board import Board
+
+from code.classes.board import Board
 
 class Solution:
 
