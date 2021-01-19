@@ -1,4 +1,4 @@
-<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>131</x><y>180</y><w>210</w><h>160</h></coordinates><panel_attributes>Class: Cars
+<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>50</x><y>180</y><w>210</w><h>160</h></coordinates><panel_attributes>Class: Cars
 --
 INIT
 - id (char)
@@ -8,7 +8,7 @@ INIT
 - length (int)
 --
 COORDINATES
-- return coordinates (1,2(,3))</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>471</x><y>180</y><w>210</w><h>190</h></coordinates><panel_attributes>Class: Board
+- return coordinates (1,2(,3))</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>380</x><y>180</y><w>210</w><h>190</h></coordinates><panel_attributes>Class: Board
 --
 INIT
 - cars (dict)
@@ -21,10 +21,10 @@ LOAD_CARS
 - appends Cars object to 'cars'-list
 --
 LOAD_BOARD
-- visualize board with car-ID</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>81</x><y>150</y><w>310</w><h>210</h></coordinates><panel_attributes>cars.py</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>761</x><y>150</y><w>310</w><h>180</h></coordinates><panel_attributes>solution.py</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>810</x><y>180</y><w>210</w><h>120</h></coordinates><panel_attributes>Class: Solution
+- visualize board with car-ID</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>150</y><w>310</w><h>210</h></coordinates><panel_attributes>cars.py</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>680</x><y>150</y><w>310</w><h>180</h></coordinates><panel_attributes>solution.py</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>729</x><y>180</y><w>210</w><h>120</h></coordinates><panel_attributes>Class: Solution
 --
 INIT
 - moves (list)
 --
 SAVE_SOLUTION
-- saves solution in correct file</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>330</x><y>180</y><w>160</w><h>70</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>140;50;40;50;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>420</x><y>150</y><w>310</w><h>260</h></coordinates><panel_attributes>board.py</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>670</x><y>220</y><w>160</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>140;10;50;10;10;60</additional_attributes></element></diagram>
+- saves solution in correct file</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>249</x><y>180</y><w>150</w><h>70</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>130;50;40;50;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>339</x><y>150</y><w>310</w><h>260</h></coordinates><panel_attributes>board.py</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>579</x><y>220</y><w>170</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>150;10;60;10;10;60</additional_attributes></element></diagram>
