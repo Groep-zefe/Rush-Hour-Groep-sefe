@@ -1,6 +1,7 @@
 import csv
 import random
 import copy
+import math
 
 from cars import Cars
 
@@ -75,16 +76,12 @@ class Board:
                 self.cars[self.random_car].col = copy.deepcopy(self.temp_coordinates)
             self.failed_move += 1
             
-        # if not possible to make a move 10 consecutive times, remove boards from archive to be able to take steps back
+        # if not possible to make a move 10 consecutive times
         if self.failed_move > 10: 
-            print(f'all {len(self.board_arch)}')
-            for i in range(5):
+            # remove last 10% boards from archive to be able to take steps back
+            for board in range(math.ceil(len(self.board_arch)/10)):
                 del self.board_arch[-1]
                 self.failed_move = 0
-            print(f'removed {len(self.board_arch)}')
-        
-        # list_coordinates = (cars[key].coordinates())
-        # print(list_coordinates)
 
     # prints each board and made move to terminal. Not necessary for good result
     def visualize_board(self):    
@@ -146,25 +143,22 @@ class Board:
                 break
 
     # move a car to new location
-    def move(self):    
-        print(self.move_car)
-        # randomly pick one of the possibilities
-        self.random_car = random.choice(list(self.move_car.keys()))
+    def move(self):
+        if ["X"] in list(self.move_car.keys()) and self.move_car["X"] == 1:
+                self.random_car = "X"
+        else:
+            # randomly pick one of the possibilities
+            self.random_car = random.choice(list(self.move_car.keys()))
                     
         # get and then change coordinates 
         car_orientation = self.cars[self.random_car].orientation
         if car_orientation == "V":
-            print(self.cars[self.random_car].row)
             self.temp_coordinates = copy.deepcopy(self.cars[self.random_car].row)
-            print(self.temp_coordinates)
             self.cars[self.random_car].row = self.cars[self.random_car].row + self.move_car[self.random_car]
-            print(self.cars[self.random_car].row)
         else:
-            print(self.cars[self.random_car].col)
             self.temp_coordinates = copy.deepcopy(self.cars[self.random_car].col)
-            print(self.temp_coordinates)
             self.cars[self.random_car].col = self.cars[self.random_car].col + self.move_car[self.random_car]
-            print(self.cars[self.random_car].col)
+
         
 
      

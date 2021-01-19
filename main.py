@@ -1,5 +1,6 @@
 import csv
 from sys import argv
+import os
 
 from cars import Cars
 from board import Board
@@ -22,26 +23,41 @@ print("Welcome to Rush Hour!\n")
 
 load = Load_game()
 board = load.game(game_name)
+previous_fastest = Solution(game_name, board.all_moves)
+previous_fastest.find_fastest()
 
+tries = 0
 
-board.load_board()
-board.visualize_board()
+# until manually stopped
+while True:
+    tries += 1
 
-winning_coordinate = board.board_size - 2 
-
-red_car = board.cars['X']
-
-while red_car.col != winning_coordinate: 
-    board.check_move()
-    board.move()
+    board = load.game(game_name)
     board.load_board()
-    board.check_board()
-    board.load_board()
-    board.visualize_board()
-    print("\n")
-        
-board.visualize_board()
+    # print("trying new game")
 
-solve_game = Solution(game_name, board.all_moves)
+    winning_coordinate = board.board_size - 2 
+    red_car = board.cars['X']
+    # play a game
+    while red_car.col != winning_coordinate: 
+        board.check_move()
+        board.move()
+        board.load_board()
+        board.check_board()
+        board.load_board()
 
-solve_game.solution()
+        temp_solution = Solution(game_name, board.all_moves)
+        temp_solution.find_fastest()
+        if temp_solution.result_check():
+            # print("too long")
+            break
+
+    # make and check the games solution    
+    solve_game = Solution(game_name, board.all_moves)
+    solve_game.find_fastest()
+    solve_game.save_solution()
+
+    os.system('cls' if os.name == 'nt' else 'clear')
+    print(f"number of tries: {tries}")
+    print(f"fastest: {solve_game.fastest_game}")
+
