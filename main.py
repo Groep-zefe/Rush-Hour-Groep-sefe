@@ -6,6 +6,7 @@ from code.classes.cars import Cars
 from code.classes.board import Board
 from code.classes.solution import Solution
 from code.classes.load import Load_game
+from code.algorithms.random import Random
 
 
 # Check command line arguments
@@ -23,7 +24,8 @@ print("Welcome to Rush Hour!\n")
 
 load = Load_game()
 board = load.game(game_name)
-previous_fastest = Solution(game_name, board.all_moves)
+random = Random(board.board_size, board.cars)
+previous_fastest = Solution(game_name, random.all_moves)
 previous_fastest.find_fastest()
 
 tries = 0
@@ -38,22 +40,25 @@ while True:
 
     winning_coordinate = board.board_size - 2 
     red_car = board.cars['X']
+
+    algorithm = Random(board.board_size, board.cars)
+
     # play a game
     while red_car.col != winning_coordinate: 
-        board.check_move()
-        board.move()
+        load_board = board.load_board()
+        algorithm.check_move(load_board)
+        algorithm.move()
         board.load_board()
-        board.check_board()
-        board.load_board()
+        algorithm.check_board(load_board)
 
-        temp_solution = Solution(game_name, board.all_moves)
+        temp_solution = Solution(game_name, algorithm.all_moves)
         temp_solution.find_fastest()
         if temp_solution.result_check():
             # print("too long")
             break
 
     # make and check the games solution    
-    solve_game = Solution(game_name, board.all_moves)
+    solve_game = Solution(game_name, algorithm.all_moves)
     solve_game.find_fastest()
     solve_game.save_solution()
 
