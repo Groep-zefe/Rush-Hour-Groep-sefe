@@ -14,18 +14,19 @@ class Breadth():
         self.all_moves = []
         self.move_car = {}
         self.failed_move = 0
-        self.board_arch = set()
+        self.board_states = set()
         self.random_car = None
         self.temp_coordinates = None
 
     def check_board(self, board): 
         self.board = tuple(board)
+        print(self.board)
         
         # if this is a new board, add it to archive, add move to moveslist
-        if self.board not in self.board_arch:
+        if self.board not in self.board_states:
             self.failed_move = 0
-            self.board_arch.append(self.board)
-            if len(self.board_arch) > 1:
+            self.board_states.add(self.board)
+            if len(self.board_states) > 1:
                 self.all_moves.append([self.random_car, self.move_car[self.random_car]])
         
         # go back to the previous board and try to make a move again
@@ -42,8 +43,8 @@ class Breadth():
         # if not possible to make a move 10 consecutive times
         if self.failed_move > 10: 
             # remove last 10% boards from archive to be able to take steps back
-            for board in range(math.ceil(len(self.board_arch)/10)):
-                del self.board_arch[-1]
+            for board in range(math.ceil(len(self.board_states)/10)):
+                del self.board_states[-1]
                 self.failed_move = 0
 
         
