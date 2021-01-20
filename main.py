@@ -7,25 +7,38 @@ from code.classes.board import Board
 from code.classes.solution import Solution
 from code.classes.load import Load_game
 from code.algorithms.random import Random
+from code.algorithms.breadth_first import Breadth
 
 
 # Check command line arguments
-if len(argv) not in [1, 2]:
-    print("Usage: python rushhour.py [Game name]")
+if len(argv) not in [1, 2, 3]:
+    print("Usage: python rushhour.py [Game_name] [algorithm]")
     exit(1)
 
 # Load the requested game or else 1
 if len(argv) == 1:
     game_name = 1
+    algorithm_name = random
 elif len(argv) == 2:
     game_name = int(argv[1])
+    algorithm_name = random 
+else: 
+    game_name = int(argv[1])
+    algorithm_name = argv[2] 
 
 print("Welcome to Rush Hour!\n")
 
 load = Load_game()
 board = load.game(game_name)
-random = Random(board.board_size, board.cars)
-previous_fastest = Solution(game_name, random.all_moves)
+if algorithm_name == 'random':
+    algo = Random(board.board_size, board.cars)
+elif algorithm_name == "breadth":
+    algo = Breadth(board.board_size, board.cars)
+else: 
+    print("This algorithm doesn't exists")
+    exit(1)
+
+previous_fastest = Solution(game_name, algo.all_moves)
 previous_fastest.find_fastest()
 
 tries = 0
@@ -41,7 +54,11 @@ while True:
     winning_coordinate = board.board_size - 2 
     red_car = board.cars['X']
 
-    algorithm = Random(board.board_size, board.cars)
+    if algorithm_name == 'random':
+         algorithm = Random(board.board_size, board.cars)
+    else:
+        algorithm = Breadth(board.board_size, board.cars)
+       
 
     # play a game
     while red_car.col != winning_coordinate: 

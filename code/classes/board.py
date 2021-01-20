@@ -1,7 +1,5 @@
 import csv
-import random
-import copy
-import math
+
 
 from code.classes.cars import Cars
 
