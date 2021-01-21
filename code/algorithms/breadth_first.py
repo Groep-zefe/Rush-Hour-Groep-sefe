@@ -11,60 +11,29 @@ class Breadth():
         self.board_size = board_size
         self.cars = car
         self.board = None
+        self.temp_board = None
         self.all_moves = []
         self.move_car = {}
-        self.failed_move = 0
         self.board_states = set()
-        self.random_car = None
-        self.temp_coordinates = None
+        self.empty_spaces = []
+        self.parent_board = None
 
-    def check_board(self, board): 
-        self.board = tuple(board)
-        print(self.board)
-        
-        # if this is a new board, add it to archive, add move to moveslist
-        if self.board not in self.board_states:
-            self.failed_move = 0
-            self.board_states.add(self.board)
-            if len(self.board_states) > 1:
-                self.all_moves.append([self.random_car, self.move_car[self.random_car]])
-        
-        # go back to the previous board and try to make a move again
-        else:
-            # self.board = self.board_arch[-1]
-            car_orientation = self.cars[self.random_car].orientation
-            # set coordinates back
-            if car_orientation == "V":
-                self.cars[self.random_car].row = copy.deepcopy(self.temp_coordinates)
-            else:
-                self.cars[self.random_car].col = copy.deepcopy(self.temp_coordinates)
-            self.failed_move += 1
-            
-        # if not possible to make a move 10 consecutive times
-        if self.failed_move > 10: 
-            # remove last 10% boards from archive to be able to take steps back
-            for board in range(math.ceil(len(self.board_states)/10)):
-                del self.board_states[-1]
-                self.failed_move = 0
-
-        
     # check board to find a possible move
-    def check_move(self, board):
-        self.move_car = {}
+    def find_spaces(self, board):
         self.board = board
-        empty_spaces = []
-        random_keys = []
+        self.parent_board = copy.deepcopy(board)
 
         # find empty spot on board
         for rows in range(self.board_size):
             for colums in range(self.board_size):
                 if self.board[rows][colums] == "_":
-                    empty_spaces.append([rows, colums])
-        
+                    self.empty_spaces.append([rows, colums])
+
+    def check_move(self, board):
+        self.move_car = {}
         # choose a random empty spot on board
-        random.shuffle(empty_spaces)
-        for space in range(len(empty_spaces)):
-            empty_temp = empty_spaces.pop()
+        for space in range(len(self.empty_spaces)):
+            empty_temp = self.empty_spaces.pop()
 
             # look for a car to move to that empty spot
             if empty_temp[1] + 1 < self.board_size:
@@ -96,26 +65,84 @@ class Breadth():
                         self.move_car[temp_car] = 1
 
             # break when a car has been found
-            if len(self.move_car.keys()) > 0:
+            if len(self.empty_spaces) == 0:
+                print(self.move_car)
                 break
 
     # move a car to new location
     def move(self):
-        if ["X"] in list(self.move_car.keys()) and self.move_car["X"] == 1:
-                self.random_car = "X"
-        else:
-            # randomly pick one of the possibilities
-            self.random_car = random.choice(list(self.move_car.keys()))
-                    
-        # get and then change coordinates 
-        car_orientation = self.cars[self.random_car].orientation
-        if car_orientation == "V":
-            self.temp_coordinates = copy.deepcopy(self.cars[self.random_car].row)
-            self.cars[self.random_car].row = self.cars[self.random_car].row + self.move_car[self.random_car]
-        else:
-            self.temp_coordinates = copy.deepcopy(self.cars[self.random_car].col)
-            self.cars[self.random_car].col = self.cars[self.random_car].col + self.move_car[self.random_car]
+        breakcheck = 0
+        car_keys = self.move_car.keys()
+        # loop over all cars and fill in their coordinates
+        for key in car_keys:
+            car_id = key
+            car_dir = self.move_car[car_id]
+            orientation = (self.cars[car_id].orientation)
+            car_length = (self.cars[car_id].length)
+            
+            for rows in range(self.board_size):
+                for colums in range(self.board_size):
+                    if self.board[rows][colums] == car_id:
+                        breakcheck = 1
+                        if orientation == "H":
+                            if car_length == "2":
+                                if car_dir == 1:
+                                    self.board[rows][colums] = '_'
+                                    self.board[rows][colums + 1] = car_id
+                                    self.board[rows][colums + 2] = car_id
+                                else: 
+                                    self.board[rows][colums - 1] = car_id
+                                    self.board[rows][colums] = car_id
+                                    self.board[rows][colums + 1] = '_'
+                            # length is 3
+                            else:
+                                if car_dir == 1:
+                                    self.board[rows][colums] = '_'
+                                    self.board[rows][colums + 1] = car_id
+                                    self.board[rows][colums + 2] = car_id
+                                    self.board[rows][colums + 3] = car_id
+                                else: 
+                                    self.board[rows][colums - 1] = car_id
+                                    self.board[rows][colums] = car_id
+                                    self.board[rows][colums + 1] = car_id
+                                    self.board[rows][colums + 2] = '_'
+                        else:
+                            if car_length == "2":
+                                if car_dir == 1:
+                                    self.board[rows][colums] = '_'
+                                    self.board[rows + 1][colums] = car_id
+                                    self.board[rows + 2][colums] = car_id
+                                else: 
+                                    self.board[rows - 1][colums] = car_id
+                                    self.board[rows][colums] = car_id
+                                    self.board[rows + 1][colums] = '_'
+                            # length is 3
+                            else:
+                                if car_dir == 1:
+                                    self.board[rows][colums] = '_'
+                                    self.board[rows + 1][colums] = car_id
+                                    self.board[rows + 2][colums] = car_id
+                                    self.board[rows + 3][colums] = car_id
+                                else: 
+                                    self.board[rows - 1][colums] = car_id
+                                    self.board[rows][colums] = car_id
+                                    self.board[rows + 1][colums] = car_id
+                                    self.board[rows + 2][colums] = '_'     
+                    if breakcheck == 1:
+                        break
+                if breakcheck == 1:
+                    breakcheck = 0
+                    break
+                      
+            # print(f'papa {self.parent_board}')
+            # print(f'kind {self.board}')
+            # convert board to tuple in tuple
+            self.temp_board = tuple(tuple(b) for b in self.board)
+            # print(self.temp_board)
+            
+            # if this is a new board, add it to archive, add move to moveslist
+            if self.temp_board not in self.board_states:
+                self.board_states.add(self.temp_board)
+                self.board = copy.deepcopy(self.parent_board)
 
-        
-
-     
+        print(self.board_states)

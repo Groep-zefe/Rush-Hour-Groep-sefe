@@ -49,7 +49,6 @@ class Random:
         self.move_car = {}
         self.board = board
         empty_spaces = []
-        random_keys = []
 
         # find empty spot on board
         for rows in range(self.board_size):

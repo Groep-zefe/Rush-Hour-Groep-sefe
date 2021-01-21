@@ -43,43 +43,55 @@ previous_fastest.find_fastest()
 
 tries = 0
 
-# until manually stopped
-while True:
-    tries += 1
+if algorithm_name == 'random':
+    # until manually stopped
+    while True:
+        tries += 1
 
+        board = load.game(game_name)
+        board.load_board()
+        # print("trying new game")
+
+        winning_coordinate = board.board_size - 2 
+        red_car = board.cars['X']
+
+        algorithm = Random(board.board_size, board.cars)
+        # play a game
+        while red_car.col != winning_coordinate: 
+            load_board = board.load_board()
+            algorithm.check_move(load_board)
+            algorithm.move()
+            board.load_board()
+            algorithm.check_board(load_board)
+
+            temp_solution = Solution(game_name, algorithm.all_moves)
+            temp_solution.find_fastest()
+            if temp_solution.result_check():
+                # print("too long")
+                break
+        
+        # make and check the games solution    
+        solve_game = Solution(game_name, algorithm.all_moves)
+        solve_game.find_fastest()
+        solve_game.save_solution()
+
+        os.system('cls' if os.name == 'nt' else 'clear')
+        print(f"number of tries: {tries}")
+        print(f"fastest: {solve_game.fastest_game}")
+else:
     board = load.game(game_name)
     board.load_board()
-    # print("trying new game")
 
-    winning_coordinate = board.board_size - 2 
-    red_car = board.cars['X']
-
-    if algorithm_name == 'random':
-         algorithm = Random(board.board_size, board.cars)
-    else:
-        algorithm = Breadth(board.board_size, board.cars)
-       
-
-    # play a game
-    while red_car.col != winning_coordinate: 
-        load_board = board.load_board()
-        algorithm.check_move(load_board)
-        algorithm.move()
-        board.load_board()
-        algorithm.check_board(load_board)
-
-        temp_solution = Solution(game_name, algorithm.all_moves)
-        temp_solution.find_fastest()
-        if temp_solution.result_check():
-            # print("too long")
-            break
+    algorithm = Breadth(board.board_size, board.cars)
+    load_board = board.load_board()
+    algorithm.find_spaces(load_board)
+    algorithm.check_move(load_board)
+    algorithm.move()
 
     # make and check the games solution    
     solve_game = Solution(game_name, algorithm.all_moves)
     solve_game.find_fastest()
     solve_game.save_solution()
 
-    os.system('cls' if os.name == 'nt' else 'clear')
-    print(f"number of tries: {tries}")
-    print(f"fastest: {solve_game.fastest_game}")
+    
 
