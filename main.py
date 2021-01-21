@@ -84,9 +84,16 @@ else:
 
     algorithm = Breadth(board.board_size, board.cars)
     load_board = board.load_board()
-    algorithm.find_spaces(load_board)
-    algorithm.check_move(load_board)
-    algorithm.move()
+
+    winning_coordinate = board.board_size - 2 
+    red_car = board.cars['X']
+
+    while red_car.col != winning_coordinate:
+        algorithm.find_spaces(load_board)
+        algorithm.check_move()
+        algorithm.move()
+        algorithm.next_child()
+        algorithm.visualize_board()
 
     # make and check the games solution    
     solve_game = Solution(game_name, algorithm.all_moves)

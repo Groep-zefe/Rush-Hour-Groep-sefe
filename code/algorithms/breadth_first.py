@@ -17,19 +17,23 @@ class Breadth():
         self.board_states = set()
         self.empty_spaces = []
         self.parent_board = None
+        self.queue = []
 
     # check board to find a possible move
     def find_spaces(self, board):
-        self.board = board
-        self.parent_board = copy.deepcopy(board)
-
+        if self.board == None:
+            self.board = board
+            self.temp_board = tuple(tuple(b) for b in self.board)
+            self.board_states.add(self.temp_board)
+        self.parent_board = copy.deepcopy(self.board)
+        
         # find empty spot on board
         for rows in range(self.board_size):
             for colums in range(self.board_size):
                 if self.board[rows][colums] == "_":
                     self.empty_spaces.append([rows, colums])
 
-    def check_move(self, board):
+    def check_move(self):
         self.move_car = {}
         # choose a random empty spot on board
         for space in range(len(self.empty_spaces)):
@@ -64,9 +68,8 @@ class Breadth():
                     if orientation == "V":
                         self.move_car[temp_car] = 1
 
-            # break when a car has been found
+            # retry when no car has been found
             if len(self.empty_spaces) == 0:
-                print(self.move_car)
                 break
 
     # move a car to new location
@@ -80,6 +83,8 @@ class Breadth():
             orientation = (self.cars[car_id].orientation)
             car_length = (self.cars[car_id].length)
             
+            self.board = copy.deepcopy(self.parent_board)
+
             for rows in range(self.board_size):
                 for colums in range(self.board_size):
                     if self.board[rows][colums] == car_id:
@@ -133,16 +138,22 @@ class Breadth():
                 if breakcheck == 1:
                     breakcheck = 0
                     break
-                      
-            # print(f'papa {self.parent_board}')
-            # print(f'kind {self.board}')
+                    
             # convert board to tuple in tuple
             self.temp_board = tuple(tuple(b) for b in self.board)
-            # print(self.temp_board)
             
             # if this is a new board, add it to archive, add move to moveslist
             if self.temp_board not in self.board_states:
                 self.board_states.add(self.temp_board)
+                self.queue.append(self.board)
                 self.board = copy.deepcopy(self.parent_board)
 
-        print(self.board_states)
+    def next_child(self):
+        print(len(self.queue))
+        self.board = self.queue.pop(0)
+        
+  # prints each board to terminal. Not necessary for good result
+    def visualize_board(self):      
+        for i in self.board:
+            print(" ".join(i))
+        print("\n")

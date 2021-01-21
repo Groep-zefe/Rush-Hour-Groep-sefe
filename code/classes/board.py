@@ -21,7 +21,6 @@ class Board:
 
         return self.cars
 
-
     def load_board(self):
         self.board = [["_" for rows in range(self.board_size)] for colums in range(self.board_size)]
 
