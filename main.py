@@ -93,7 +93,7 @@ else:
         algorithm.check_move()
         algorithm.move()
         algorithm.next_child()
-        algorithm.visualize_board()
+        # algorithm.visualize_board()
 
     # make and check the games solution    
     solve_game = Solution(game_name, algorithm.all_moves)

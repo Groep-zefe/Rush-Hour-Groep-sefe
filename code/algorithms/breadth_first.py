@@ -71,6 +71,8 @@ class Breadth():
             # retry when no car has been found
             if len(self.empty_spaces) == 0:
                 break
+            print(self.board)
+            print(self.move_car)
 
     # move a car to new location
     def move(self):
@@ -149,8 +151,8 @@ class Breadth():
                 self.board = copy.deepcopy(self.parent_board)
 
     def next_child(self):
-        print(len(self.queue))
         self.board = self.queue.pop(0)
+        
         
   # prints each board to terminal. Not necessary for good result
     def visualize_board(self):      
