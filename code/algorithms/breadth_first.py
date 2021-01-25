@@ -11,8 +11,10 @@ class Breadth():
         self.board_size = board_size
         self.cars = car
         self.board = None
+        self.first_board = None
         self.temp_board = None
         self.all_moves = []
+        self.moves_dict = {}
         self.move_car = {}
         self.board_states = set()
         self.empty_spaces = []
@@ -23,6 +25,7 @@ class Breadth():
     def find_spaces(self, board):
         if self.board == None:
             self.board = board
+            self.first_board = tuple(tuple(b) for b in board)
             self.temp_board = tuple(tuple(b) for b in self.board)
             self.board_states.add(self.temp_board)
         self.parent_board = copy.deepcopy(self.board)
@@ -45,34 +48,32 @@ class Breadth():
                     temp_car = self.board[empty_temp[0]][empty_temp[1] + 1]
                     orientation = (self.cars[temp_car].orientation)
                     if orientation == "H":
-                        self.move_car[temp_car] = - 1
+                        self.move_car[tuple([temp_car, -1])] = - 1
             
             if empty_temp[1] - 1  > 0:
                 if self.board[empty_temp[0]][empty_temp[1] - 1] != "_":
                     temp_car = self.board[empty_temp[0]][empty_temp[1] - 1]
                     orientation = (self.cars[temp_car].orientation)
                     if orientation == "H":
-                        self.move_car[temp_car] = 1
+                        self.move_car[tuple([temp_car, 1])] = 1
              
             if empty_temp[0] + 1 < self.board_size:              
                 if self.board[empty_temp[0] + 1][empty_temp[1]] != "_":
                     temp_car = self.board[empty_temp[0] + 1][empty_temp[1]]
                     orientation = (self.cars[temp_car].orientation)
                     if orientation == "V":
-                        self.move_car[temp_car] = - 1
+                        self.move_car[tuple([temp_car, -1])] = - 1
           
             if empty_temp[0] - 1 > 0:  
                 if self.board[empty_temp[0] - 1][empty_temp[1]] != "_":
                     temp_car = self.board[empty_temp[0] - 1][empty_temp[1]]
                     orientation = (self.cars[temp_car].orientation)
                     if orientation == "V":
-                        self.move_car[temp_car] = 1
+                        self.move_car[tuple([temp_car, 1])] = 1
 
             # retry when no car has been found
             if len(self.empty_spaces) == 0:
                 break
-            print(self.board)
-            print(self.move_car)
 
     # move a car to new location
     def move(self):
@@ -80,8 +81,8 @@ class Breadth():
         car_keys = self.move_car.keys()
         # loop over all cars and fill in their coordinates
         for key in car_keys:
-            car_id = key
-            car_dir = self.move_car[car_id]
+            car_id = key[0]
+            car_dir = self.move_car[key]
             orientation = (self.cars[car_id].orientation)
             car_length = (self.cars[car_id].length)
             
@@ -147,12 +148,28 @@ class Breadth():
             # if this is a new board, add it to archive, add move to moveslist
             if self.temp_board not in self.board_states:
                 self.board_states.add(self.temp_board)
+                self.moves_dict[self.temp_board] = tuple(tuple(b) for b in self.parent_board)
                 self.queue.append(self.board)
                 self.board = copy.deepcopy(self.parent_board)
 
     def next_child(self):
         self.board = self.queue.pop(0)
         
+    def won(self):
+        red_row = self.cars["X"].row
+        if self.board[red_row][self.board_size - 1] == "X":
+            return True
+
+    def traceback(self):
+        self.temp_board = tuple(tuple(b) for b in self.board)
+        previous_board = self.moves_dict[self.temp_board]
+        count = 1
+        while previous_board != self.first_board:
+            previous_board = self.moves_dict[previous_board]
+            count += 1
+        return count
+        
+
         
   # prints each board to terminal. Not necessary for good result
     def visualize_board(self):      

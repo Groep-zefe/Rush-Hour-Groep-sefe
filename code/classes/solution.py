@@ -24,7 +24,6 @@ class Solution:
                 i += 1
             else: 
                 break
-        # print(f"first {self.fastest_game}")
         
     def save_solution(self): 
         # print(f"so fast {len(self.results)}")

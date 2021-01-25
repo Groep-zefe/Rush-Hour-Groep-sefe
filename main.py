@@ -6,6 +6,7 @@ from code.classes.cars import Cars
 from code.classes.board import Board
 from code.classes.solution import Solution
 from code.classes.load import Load_game
+from code.classes.timer import Timer
 from code.algorithms.random import Random
 from code.algorithms.breadth_first import Breadth
 
@@ -27,6 +28,9 @@ else:
     algorithm_name = argv[2] 
 
 print("Welcome to Rush Hour!\n")
+
+t = Timer()
+t.start()
 
 load = Load_game()
 board = load.game(game_name)
@@ -88,17 +92,20 @@ else:
     winning_coordinate = board.board_size - 2 
     red_car = board.cars['X']
 
-    while red_car.col != winning_coordinate:
+    while True:
         algorithm.find_spaces(load_board)
         algorithm.check_move()
         algorithm.move()
         algorithm.next_child()
         # algorithm.visualize_board()
+        if algorithm.won():
+            print(algorithm.traceback())
+            break
 
     # make and check the games solution    
     solve_game = Solution(game_name, algorithm.all_moves)
     solve_game.find_fastest()
-    solve_game.save_solution()
+    # solve_game.save_solution()
 
-    
+t.stop()    
 
