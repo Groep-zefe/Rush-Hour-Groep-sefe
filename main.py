@@ -7,8 +7,10 @@ from code.classes.board import Board
 from code.classes.solution import Solution
 from code.classes.load import Load_game
 from code.classes.timer import Timer
+from code.classes.moves import Winning_moves
 from code.algorithms.random import Random
 from code.algorithms.breadth_first import Breadth
+
 
 
 # Check command line arguments
@@ -71,7 +73,7 @@ if algorithm_name == 'random':
             temp_solution = Solution(game_name, algorithm.all_moves)
             temp_solution.find_fastest()
             if temp_solution.result_check():
-                # print("too long")
+                t.stop() 
                 break
         
         # make and check the games solution    
@@ -99,13 +101,15 @@ else:
         algorithm.next_child()
         # algorithm.visualize_board()
         if algorithm.won():
-            print(algorithm.traceback())
+            t.stop() 
             break
+  
+    moves = Winning_moves(board.board_size, board.cars, algorithm.traceback())
+    moves.traceback_moves()
 
     # make and check the games solution    
-    solve_game = Solution(game_name, algorithm.all_moves)
-    solve_game.find_fastest()
-    # solve_game.save_solution()
+    solve_game = Solution(game_name, moves.all_moves)
+    solve_game.save_solution()
 
-t.stop()    
+   
 

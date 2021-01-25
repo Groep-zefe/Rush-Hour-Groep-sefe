@@ -4,6 +4,7 @@ import time
 from pathlib import Path
 
 from code.classes.board import Board
+from code.algorithms.breadth_first import Breadth
 
 class Solution:
 
@@ -46,5 +47,7 @@ class Solution:
     def result_check(self):
         if len(self.results) >= self.fastest_game:
             return True
+    
+
         
                 

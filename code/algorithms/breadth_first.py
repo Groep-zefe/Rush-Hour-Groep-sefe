@@ -161,13 +161,15 @@ class Breadth():
             return True
 
     def traceback(self):
-        self.temp_board = tuple(tuple(b) for b in self.board)
-        previous_board = self.moves_dict[self.temp_board]
-        count = 1
+        winning_states = []
+        current_board = tuple(tuple(b) for b in self.board)
+        previous_board = self.moves_dict[current_board]
+        winning_states.append(current_board)
+        winning_states.append(previous_board)
         while previous_board != self.first_board:
             previous_board = self.moves_dict[previous_board]
-            count += 1
-        return count
+            winning_states.append(previous_board)
+        return winning_states
         
 
         
