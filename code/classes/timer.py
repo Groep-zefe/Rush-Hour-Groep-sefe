@@ -1,6 +1,7 @@
 import time
 
-# used from: https://realpython.com/python-timer/
+
+# Used source: https://realpython.com/python-timer/
 
 class Timer:
     def __init__(self):
@@ -14,11 +15,12 @@ class Timer:
         self._start_time = time.perf_counter()
 
     def stop(self):
-        # Stop the timer, and report the elapsed time
+        # Stop the timer, and report the runtime
         if self._start_time is None:
             raise TimerError(f"Timer is not running. Use .start() to start it")
 
         elapsed_time = time.perf_counter() - self._start_time
+        # This part we add ourself
         minutes = elapsed_time / 60
         seconds = elapsed_time % 60
         self._start_time = None

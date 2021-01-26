@@ -1,8 +1,10 @@
-
 import copy
+
 
 from code.algorithms.breadth_first import Breadth
 
+
+# Class that finds all moves that are made to find a solution 
 class Winning_moves(): 
     def __init__(self, board_size, car, boards):
         self.board_size = board_size
@@ -11,13 +13,14 @@ class Winning_moves():
         self.all_moves = []
         self.board = None
     
-
     def traceback_moves(self): 
-
+        # Loops over all the boards that have lead to the solution
         while len(self.all_boards) > 1: 
+            # Pops the last board from the list and makes that the current board
             this_board = list(list(b) for b in self.all_boards.pop(-1))
             parent_board = this_board
 
+            # Uses the Breadth First functions to find the empty the moves 
             find_move = Breadth(self.board_size, self.cars)
 
             find_move.find_spaces(this_board)
@@ -26,7 +29,7 @@ class Winning_moves():
             breakcheck = 0
         
             car_keys = find_move.move_car.keys()
-            # loop over all cars and fill in their coordinates
+            # Loop over all cars that can move and creates a new board
             for key in car_keys:
                 car_id = key[0]
                 car_dir = find_move.move_car[key]
@@ -49,7 +52,7 @@ class Winning_moves():
                                         self.board[rows][colums - 1] = car_id
                                         self.board[rows][colums] = car_id
                                         self.board[rows][colums + 1] = '_'
-                                # length is 3
+                                # Cars of Length 3
                                 else:
                                     if car_dir == 1:
                                         self.board[rows][colums] = '_'
@@ -61,6 +64,7 @@ class Winning_moves():
                                         self.board[rows][colums] = car_id
                                         self.board[rows][colums + 1] = car_id
                                         self.board[rows][colums + 2] = '_'
+                            # Cars that have a orientation of V
                             else:
                                 if car_length == "2":
                                     if car_dir == 1:
@@ -71,7 +75,7 @@ class Winning_moves():
                                         self.board[rows - 1][colums] = car_id
                                         self.board[rows][colums] = car_id
                                         self.board[rows + 1][colums] = '_'
-                                # length is 3
+                                # Casr of length 3
                                 else:
                                     if car_dir == 1:
                                         self.board[rows][colums] = '_'
@@ -88,7 +92,8 @@ class Winning_moves():
                     if breakcheck == 1:
                         breakcheck = 0
                         break
-                        
+
+                # When the current board is the last board of the list that is the move you have to save       
                 if self.board == list(list(b) for b in self.all_boards[-1]):
                     self.all_moves.append([key[0][0], key[1]])
 
