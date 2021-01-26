@@ -19,5 +19,7 @@ class Timer:
             raise TimerError(f"Timer is not running. Use .start() to start it")
 
         elapsed_time = time.perf_counter() - self._start_time
+        minutes = elapsed_time / 60
+        seconds = elapsed_time % 60
         self._start_time = None
-        print(f"Runtime: {elapsed_time:0.4f} seconds")
+        print(f"Runtime: {minutes:0.0f} minutes and {seconds:0.4f} seconds")
