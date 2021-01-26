@@ -16,18 +16,16 @@ class Breadth():
         self.all_moves = []
         self.moves_dict = {}
         self.move_car = {}
-        self.board_states = set()
         self.empty_spaces = []
         self.parent_board = None
         self.queue = []
+
 
     # check board to find a possible move
     def find_spaces(self, board):
         if self.board == None:
             self.board = board
             self.first_board = tuple(tuple(b) for b in board)
-            self.temp_board = tuple(tuple(b) for b in self.board)
-            self.board_states.add(self.temp_board)
         self.parent_board = copy.deepcopy(self.board)
         
         # find empty spot on board
@@ -35,6 +33,7 @@ class Breadth():
             for colums in range(self.board_size):
                 if self.board[rows][colums] == "_":
                     self.empty_spaces.append([rows, colums])
+
 
     def check_move(self):
         self.move_car = {}
@@ -74,6 +73,7 @@ class Breadth():
             # retry when no car has been found
             if len(self.empty_spaces) == 0:
                 break
+
 
     # move a car to new location
     def move(self):
@@ -146,19 +146,20 @@ class Breadth():
             self.temp_board = tuple(tuple(b) for b in self.board)
             
             # if this is a new board, add it to archive, add move to moveslist
-            if self.temp_board not in self.board_states:
-                self.board_states.add(self.temp_board)
+            if self.temp_board not in self.moves_dict.keys():
                 self.moves_dict[self.temp_board] = tuple(tuple(b) for b in self.parent_board)
                 self.queue.append(self.board)
                 self.board = copy.deepcopy(self.parent_board)
 
     def next_child(self):
         self.board = self.queue.pop(0)
-        
+
+
     def won(self):
         red_row = self.cars["X"].row
         if self.board[red_row][self.board_size - 1] == "X":
             return True
+
 
     def traceback(self):
         winning_states = []
@@ -171,8 +172,7 @@ class Breadth():
             winning_states.append(previous_board)
         return winning_states
         
-
-        
+     
   # prints each board to terminal. Not necessary for good result
     def visualize_board(self):      
         for i in self.board:
