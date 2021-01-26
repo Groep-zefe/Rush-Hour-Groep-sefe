@@ -42,8 +42,7 @@ class Random:
             for board in range(math.ceil(len(self.board_arch)/10)):
                 del self.board_arch[-1]
                 self.failed_move = 0
-
-        
+  
     # check board to find a possible move
     def check_move(self, board):
         self.move_car = {}
@@ -96,6 +95,7 @@ class Random:
 
     # move a car to new location
     def move(self):
+        # if red car can move, move red car
         if ["X"] in list(self.move_car.keys()) and self.move_car["X"] == 1:
                 self.random_car = "X"
         else:

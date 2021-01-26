@@ -7,25 +7,26 @@ import math
 from code.classes.board import Board
 
 class Breadth(): 
-    def __init__(self, board_size, car):
+    def __init__(self, board_size, cars):
         self.board_size = board_size
-        self.cars = car
+        self.cars = cars
         self.board = None
         self.first_board = None
         self.temp_board = None
         self.all_moves = []
         self.moves_dict = {}
-        self.move_car = {}
         self.empty_spaces = []
+        self.move_car = {}
         self.parent_board = None
         self.queue = []
 
-
     # check board to find a possible move
     def find_spaces(self, board):
+        # if this is the first board
         if self.board == None:
             self.board = board
             self.first_board = tuple(tuple(b) for b in board)
+        # temporarily save parent board
         self.parent_board = copy.deepcopy(self.board)
         
         # find empty spot on board
@@ -34,7 +35,7 @@ class Breadth():
                 if self.board[rows][colums] == "_":
                     self.empty_spaces.append([rows, colums])
 
-
+    # see if a move can be made
     def check_move(self):
         self.move_car = {}
         # choose a random empty spot on board
@@ -74,24 +75,26 @@ class Breadth():
             if len(self.empty_spaces) == 0:
                 break
 
-
-    # move a car to new location
+    # make them move
     def move(self):
         breakcheck = 0
         car_keys = self.move_car.keys()
-        # loop over all cars and fill in their coordinates
+        # loop over all cars and get their info
         for key in car_keys:
             car_id = key[0]
             car_dir = self.move_car[key]
             orientation = (self.cars[car_id].orientation)
             car_length = (self.cars[car_id].length)
             
+            # (re)set to parent board
             self.board = copy.deepcopy(self.parent_board)
 
+            # find car in the board and change the coordinates
             for rows in range(self.board_size):
                 for colums in range(self.board_size):
                     if self.board[rows][colums] == car_id:
                         breakcheck = 1
+                        # horizontal cars
                         if orientation == "H":
                             if car_length == "2":
                                 if car_dir == 1:
@@ -114,6 +117,7 @@ class Breadth():
                                     self.board[rows][colums] = car_id
                                     self.board[rows][colums + 1] = car_id
                                     self.board[rows][colums + 2] = '_'
+                        # vertical cars
                         else:
                             if car_length == "2":
                                 if car_dir == 1:
@@ -145,35 +149,39 @@ class Breadth():
             # convert board to tuple in tuple
             self.temp_board = tuple(tuple(b) for b in self.board)
             
-            # if this is a new board, add it to archive, add move to moveslist
+            # if this is a new board, add it to archive, add to queue
             if self.temp_board not in self.moves_dict.keys():
                 self.moves_dict[self.temp_board] = tuple(tuple(b) for b in self.parent_board)
                 self.queue.append(self.board)
-                self.board = copy.deepcopy(self.parent_board)
-
+              
+    # get next board in queue
     def next_child(self):
         self.board = self.queue.pop(0)
 
-
+    # check if the game is won
     def won(self):
+        # get red car coordinates, check if on the winning location
         red_row = self.cars["X"].row
         if self.board[red_row][self.board_size - 1] == "X":
             return True
 
-
+    # trace back the boards in moves_dict to find the steps made
     def traceback(self):
+        # make a list to save all boards in
         winning_states = []
         current_board = tuple(tuple(b) for b in self.board)
+        # first add last and second to last board
         previous_board = self.moves_dict[current_board]
         winning_states.append(current_board)
         winning_states.append(previous_board)
+        # add all preceding boards
         while previous_board != self.first_board:
             previous_board = self.moves_dict[previous_board]
             winning_states.append(previous_board)
         return winning_states
         
      
-  # prints each board to terminal. Not necessary for good result
+  # prints each board to terminal. Not necessary to get result
     def visualize_board(self):      
         for i in self.board:
             print(" ".join(i))
