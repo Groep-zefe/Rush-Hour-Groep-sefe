@@ -2,7 +2,6 @@ import csv
 from sys import argv
 import os
 
-
 from code.classes.cars import Cars
 from code.classes.board import Board
 from code.classes.solution import Solution
@@ -105,15 +104,13 @@ else:
     red_car = board.cars['X']
 
    # Code to find the solution to a game  
-    while True:
+    while algorithm.won() == False:
         algorithm.find_spaces(load_board)
         algorithm.check_move()
         algorithm.move()
         algorithm.next_child()
-        # Checks if the state of the board is the winning state 
-        if algorithm.won():
-            t.stop() 
-            break
+
+    t.stop() 
     
     # Checks all the moves that are made to find a solution
     moves = Winning_moves(board.board_size, board.cars, algorithm.traceback())
@@ -122,6 +119,7 @@ else:
     # Saves the games solution    
     solve_game = Solution(game_name, moves.all_moves)
     solve_game.save_solution()
+    print(f"I'm Speed: {solve_game.fastest_game}!!")
 
    
 

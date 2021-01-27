@@ -2,15 +2,20 @@ import csv
 
 from code.classes.cars import Cars
 
+
 class Board:
     def __init__(self):
+        """ Loads the cars and creates a board with the cars on the right places."""
+        
         self.cars = {}
         self.board_size = 0
         self.board = [[]]
 
-    # Opens the data file
+
     def load_cars(self, filename):
-        with open ( filename, "r") as csvfile:
+        """ Opens the right csv file and loads all the car information in a dictionary."""
+
+        with open (filename, "r") as csvfile:
             datafile = csv.reader(csvfile)
 
             # Sets the cars and size of the board correctly 
@@ -22,21 +27,17 @@ class Board:
 
         return self.cars
 
-    # Loads the board
+    
     def load_board(self):
-        self.board = [["_" for rows in range(self.board_size)] for colums in range(self.board_size)]
+        """ Creates a list that represents the board of the game."""
 
-        # Set whole board to 0 
-        for rows in range(self.board_size):
-            for colums in range(self.board_size):
-                self.board[rows][colums] = 0
-        
-        cars = self.cars
-        car_keys = cars.keys()
+        self.board = [["_" for rows in range(self.board_size)] for colums in range(self.board_size)]
+  
+        car_keys = self.cars.keys()
 
         # Loop over all cars and fill in their coordinates
         for key in car_keys:
-            list_coordinates = (cars[key].coordinates())
+            list_coordinates = (self.cars[key].coordinates())
            
             car_id = list_coordinates[0]
             self.board[list_coordinates[1][0]][list_coordinates[1][1]] = car_id
@@ -45,40 +46,13 @@ class Board:
             # Sets the board coordinates for the car ID
             if len(list_coordinates) == 4: 
                 self.board[list_coordinates[3][0]][list_coordinates[3][1]] = car_id
-
-        # Fills in an underscore for eacht empty spot on the board    
-        for rows in range(self.board_size):
-            for colums in range(self.board_size):
-                if self.board[rows][colums] == 0:
-                    self.board[rows][colums] = "_"
-        
+ 
         return(self.board)
 
 
-  # Prints each board and made move to terminal
-    def visualize_board(self):      
-        for i in self.board:
-            print(" ".join(i))
+    def visualize_board(self):    
+        """ Makes a nice visualisation of the board."""  
         
-           
-            car_id = list_coordinates[0]
-            self.board[list_coordinates[1][0]][list_coordinates[1][1]] = car_id
-            self.board[list_coordinates[2][0]][list_coordinates[2][1]] = car_id
-
-            if len(list_coordinates) == 4: 
-                self.board[list_coordinates[3][0]][list_coordinates[3][1]] = car_id
-
-        # fill in underscore for eacht empty spot on the board    
-        for rows in range(self.board_size):
-            for colums in range(self.board_size):
-                if self.board[rows][colums] == 0:
-                    self.board[rows][colums] = "_"
-        
-        return(self.board)
-
-
-  # prints each board and made move to terminal. Not necessary for good result
-    def visualize_board(self):      
         for i in self.board:
             print(" ".join(i))
         

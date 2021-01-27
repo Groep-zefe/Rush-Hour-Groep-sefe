@@ -1,13 +1,17 @@
 class Cars:
     def __init__(self, car_id, car_orie, car_row, car_col, car_len):
+        """ Creates a car with a the given information.""" 
+
         self.id = car_id
         self.orientation = car_orie
         self.row = int(car_row) - 1
         self.col = int(car_col) - 1
         self.length = car_len
     
-    # Sets the first coordinates of the car
-    def coordinates(self): 
+
+    def coordinates(self):
+        """Calculates the coordinates of a car."""
+        
         self.coordinates_one = [self.row, self.col]
 
         # Checks the orientation of the car for the second coordinates

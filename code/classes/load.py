@@ -1,11 +1,15 @@
 from code.classes.board import Board
 
-class Load_game():
+
+class Load_game:
     def __init__(self):
+        """ Loads the game of your choosing."""
         pass
     
-    # Chooses the board based on the game input in the terminal
+    
     def game(self, game):
+        """ Chooses the game based on the input in the terminal."""
+
         board = Board()
         if game <= 3:
             board.load_cars(f"boards/Rushhour6x6_{game}.csv")
