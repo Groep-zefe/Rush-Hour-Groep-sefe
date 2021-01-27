@@ -1,6 +1,10 @@
 # Rush-Hour-Groep-zefe
 
-Rush Hour is a puzzle game where the objective is to move vehicles on a board until the red car is able to escape. This program focuses on the ability to solve any board from the game automatically and specifically to do it in as fewest moves as possible using implemented algorithms.
+Rush Hour is a puzzle game where the objective is to move vehicles on a board until the red car is able to escape. This program focuses on the ability to solve any board from the game automatically and specifically to do it in as fewest moves as possible using implemented algorithms. The first algorithm implemented was a random with archive algorithm, where random moves were made every turn and distinctive boards couldn't be repeated. The second algorithm implemented was a Breadth First algorithm, where every possible board combination is being visited until the program finds the solution requiring the fewest moves possible. 
+
+## Information about the files
+
+The files are neatly organized in different folders. The 'code' folder represents the code needed to run this program. In here the 'classes' folder represents the different types of classes used for this program. The 'algorithms' folder represents the 2 different algorithms used for this program, depending on what the user wants.
 
 ## Installation
 
@@ -9,12 +13,9 @@ There are several steps needed to succesfully run the code:
 2. Download the files from this repository to your computer.
 3. Open the files in your application that is able to run these files (e.g. Visual Studio Code).
 4. Run 'python main.py' in the terminal to run the game (use 'python3' instead of 'python' if you're running the later Python versions).
-5. ***** omschrijving verschillende command line arguments
-6. **** omschrijving hoe output uit te lezen
-
-
-Some specifications to keep in mind is that by simply running 'main.py' in the terminal, the code automatically loads the first board. You can choose a different board by simply adding a number of the preferred board after 'main.py'. Furthermore once the code runs it will never stop, so to make it stop you'd have to perform a keyboard interrupt in the terminal.
+5. After the command 'python main.py' you have the option to choose a board (represented by a number) you want to be solved. Choosing no number results in the first board being selected automatically. After that you have the option to type in either 'random' or 'breadth' to choose the algorithm you want to use for solving the board.
+6. The output in the terminal depends on using either the random algorithm or the Breadth First algorithm. By filling in 'random' or nothing at all, you get an output reading the number of tries the program has run through the board, as well as the fastest solution in terms of moves. By filling in 'breadth', you get an output reading the minimum amount of moves needed to solve the board, as well as the time it took for the program to solve the board.
 
 ## Specifics
 
-This program loads a gameboard that you've selected in the terminal. The game will run on automatically, printing the amount of attemps it's done, as well as the fewest amount of moves needed for the fastest solution. Everytime a solution is found requiring the fewest amount of moves the program automatically makes a file saving the results in steps of which car was moved and 1 step in which direction. 
+Running this program not only gives an output in the terminal, but also creates a csv-file in the 'solutions' tab of this project. For the random and archive algorithm, a csv-file is created every time a solution is found that represents the fewest amount of moves needed to solve the board. For the Breadth First algorithm, a csv-file is created only once for every time you run the needed command in the terminal. Furthermore the program stops for the Breadth First algorithm as soon as a solution has been found, this is different for the random and archive algorithm however. Running this algorithm results in the program constantly trying to solve the game again, looking for faster solutions. It can only be stopped using a keyboard interrupt in the terminal. 
