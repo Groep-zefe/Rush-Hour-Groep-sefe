@@ -4,13 +4,21 @@ Rush Hour is a puzzle game where the objective is to move vehicles on a board un
 
 ## Information about the files
 
-The files are neatly organized in different folders. The 'code' folder represents the code needed to run this program. In here the 'classes' folder represents the different types of classes used for this program. The 'algorithms' folder represents the 2 different algorithms used for this program, depending on what the user wants.
+The files are neatly organized in different folders. There are 4 main folders in this project: boards, code, docs and solutions. Furthermore this project contains a README file, an init.py file and a main.py file.
+
+The boards folder consists of the seven boards used for this project, but users can add more boards to this folder if they want to.
+
+The 'code' folder represents the code needed to run this program. In here the 'classes' folder represents the different types of classes used for this program. The 'algorithms' folder represents the 2 different algorithms used for this program, depending on what the user wants to use.
+
+The docs folder consists of the data structure for both the random and the Breadth First algorithm.
+
+The solutions folder consists of the csv-files that have been made when running the code.
 
 ## Installation
 
 There are several steps needed to succesfully run the code:
 1. Have Python installed on your computer (preferably Python 3).
-2. Download the files from this repository to your computer.
+2. Download the files from this repository to your computer. You can also clone the repository to your application using 'git clone '
 3. Open the files in your application that is able to run these files (e.g. Visual Studio Code).
 4. Run 'python main.py' in the terminal to run the game (use 'python3' instead of 'python' if you're running the later Python versions).
 5. After the command 'python main.py' you have the option to choose a board (represented by a number) you want to be solved. Choosing no number results in the first board being selected automatically. After that you have the option to type in either 'random' or 'breadth' to choose the algorithm you want to use for solving the board.
