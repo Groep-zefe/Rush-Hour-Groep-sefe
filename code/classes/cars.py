@@ -6,10 +6,11 @@ class Cars:
         self.col = int(car_col) - 1
         self.length = car_len
     
-    
+    # Sets the first coordinates of the car
     def coordinates(self): 
         self.coordinates_one = [self.row, self.col]
 
+        # Checks the orientation of the car for the second coordinates
         if self.orientation == "H":
             self.coordinates_two = [self.row, self.col + 1]
         else: 
