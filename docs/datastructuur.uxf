@@ -1,30 +1,70 @@
-<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>50</x><y>180</y><w>210</w><h>160</h></coordinates><panel_attributes>Class: Cars
+<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>0</x><y>78</y><w>300</w><h>420</h></coordinates><panel_attributes>random.py
 --
-INIT
-- id (char)
-- orientation (char)
-- row (int)
-- col (int)
-- length (int)
---
-COORDINATES
-- return coordinates (1,2(,3))</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>380</x><y>180</y><w>210</w><h>190</h></coordinates><panel_attributes>Class: Board
---
-INIT
-- cars (dict)
-- board_size (int)
---
-MOVE
-- moves the cars to find a solution
---
-LOAD_CARS
-- appends Cars object to 'cars'-list
---
-LOAD_BOARD
-- visualize board with car-ID</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>150</y><w>310</w><h>210</h></coordinates><panel_attributes>cars.py</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>680</x><y>150</y><w>310</w><h>180</h></coordinates><panel_attributes>solution.py</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>729</x><y>180</y><w>210</w><h>120</h></coordinates><panel_attributes>Class: Solution
---
-INIT
+init
+- board size
+- car objects (list)
+- board
 - moves (list)
+- movable cars (dict)
+- count failed moves (int)
+- save used boards (list)
+- random car
+- temporarily save coordinates
+       
 --
-SAVE_SOLUTION
-- saves solution in correct file</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>249</x><y>180</y><w>150</w><h>70</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>130;50;40;50;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>339</x><y>150</y><w>310</w><h>260</h></coordinates><panel_attributes>board.py</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>579</x><y>220</y><w>170</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>150;10;60;10;10;60</additional_attributes></element></diagram>
+check_board
+- use new car coordinates to try a new board
+- if not a new board, set back previous
+- if 10 times no new board possible, allow steps back
+
+--
+check_move
+- take random empty space
+- find cars to move to that space
+
+--
+move
+- move red car if possible
+- else pick random car
+- change cars coordinates to new location</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>340</x><y>78</y><w>270</w><h>660</h></coordinates><panel_attributes>breadth_first.py
+--
+init
+- board size
+- car objects (list) 
+- board
+- first board
+- temp board
+- all moves (list)
+- all moves (dict)
+- empty spaces (list)
+- movable cars (dict)
+- parent board
+- queue (list)
+--
+find_spaces
+- set the first board or set back parent board
+- fill list of empty spaces
+
+--
+check_move
+- loop over empty space, find moveable cars
+- add movable cars to list 
+
+--
+move
+- loop over movable cars
+- make new board by moving a car
+- if new board: append it to queue and record move
+
+--
+next_child
+- set board to next board from queue
+
+--
+won 
+- check if red car is on winning coordinates
+
+--
+traceback
+- when won, make a list of boards that made the win possible
+</panel_attributes><additional_attributes></additional_attributes></element></diagram>

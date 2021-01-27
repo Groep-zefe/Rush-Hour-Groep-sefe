@@ -9,7 +9,6 @@ class Random:
         self.board_size = board_size
         self.cars = car
         self.board = None
-        self.all_moves = []
         self.move_car = {}
         self.failed_move = 0
         self.board_arch = []

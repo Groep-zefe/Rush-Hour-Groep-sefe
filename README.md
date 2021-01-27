@@ -9,6 +9,9 @@ There are several steps needed to succesfully run the code:
 2. Download the files from this repository to your computer.
 3. Open the files in your application that is able to run these files (e.g. Visual Studio Code).
 4. Run 'python main.py' in the terminal to run the game (use 'python3' instead of 'python' if you're running the later Python versions).
+5. ***** omschrijving verschillende command line arguments
+6. **** omschrijving hoe output uit te lezen
+
 
 Some specifications to keep in mind is that by simply running 'main.py' in the terminal, the code automatically loads the first board. You can choose a different board by simply adding a number of the preferred board after 'main.py'. Furthermore once the code runs it will never stop, so to make it stop you'd have to perform a keyboard interrupt in the terminal.
 
