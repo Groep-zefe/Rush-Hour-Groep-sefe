@@ -28,6 +28,6 @@ There are several steps needed to succesfully run the code:
 
 Running this program not only gives an output in the terminal, but also creates a csv-file in the 'solutions' tab of this project. The csv-file displays the moves made for the particular boards that has been solved. The first line in the file displays which car is being moved for each move, which direction it went (either 1 or -1) and the amount of moves it took to solve the board. The next lines display the letter the car represents as well as the move that was made.
 
-*Random and Archive algorithm*
+**Random and Archive algorithm**
 
 When running the random and archive algorithm the terminal displays the amount of 
