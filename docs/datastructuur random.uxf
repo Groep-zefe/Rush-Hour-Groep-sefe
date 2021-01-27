@@ -1,4 +1,4 @@
-<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>623</x><y>188</y><w>300</w><h>420</h></coordinates><panel_attributes>random.py
+<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>623</x><y>148</y><w>300</w><h>420</h></coordinates><panel_attributes>random.py
 Class Random
 --
 init
@@ -27,7 +27,7 @@ check_move
 move
 - move red car if possible
 - else pick random car
-- change cars coordinates to new location</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>313</x><y>186</y><w>260</w><h>190</h></coordinates><panel_attributes>cars.py
+- change cars coordinates to new location</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>313</x><y>146</y><w>260</w><h>190</h></coordinates><panel_attributes>cars.py
 Class Cars
 --
 init
@@ -39,14 +39,14 @@ init
 --
 coordinates
 - set all coordinates based on startpoint, 
-         orientation and length</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>314</x><y>416</y><w>260</w><h>120</h></coordinates><panel_attributes>load.py
+         orientation and length</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>314</x><y>376</y><w>260</w><h>120</h></coordinates><panel_attributes>load.py
 Class Load_game
 --
 init
 - pass
 --
 game
-- load the requested board</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>186</y><w>260</w><h>280</h></coordinates><panel_attributes>board.py
+- load the requested board</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>146</y><w>260</w><h>280</h></coordinates><panel_attributes>board.py
 Class Board
 --
 init
@@ -65,7 +65,7 @@ load_board
 
 --
 visualize_board
-- loop over board and print it</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>983</x><y>190</y><w>260</w><h>290</h></coordinates><panel_attributes>solution.py
+- loop over board and print it</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>983</x><y>150</y><w>260</w><h>290</h></coordinates><panel_attributes>solution.py
 Class Solution
 --
 init
@@ -84,4 +84,4 @@ save_solution
 
 --
 result_check
-- check results</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>135</x><y>196</y><w>220</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>200;10;10;120</additional_attributes></element><element><id>Relation</id><coordinates><x>205</x><y>376</y><w>140</w><h>70</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>120;50;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>489</x><y>200</y><w>150</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>130;60;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>539</x><y>270</y><w>100</w><h>180</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>80;10;10;160</additional_attributes></element></diagram>
+- check results</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>135</x><y>156</y><w>220</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>200;10;10;120</additional_attributes></element><element><id>Relation</id><coordinates><x>205</x><y>336</y><w>140</w><h>70</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>120;50;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>489</x><y>160</y><w>150</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>130;60;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>539</x><y>230</y><w>100</w><h>180</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>80;10;10;160</additional_attributes></element><element><id>Relation</id><coordinates><x>695</x><y>220</y><w>300</w><h>50</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>280;10;10;30</additional_attributes></element></diagram>
