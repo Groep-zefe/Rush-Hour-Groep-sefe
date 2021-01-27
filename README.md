@@ -10,7 +10,7 @@ The boards folder consists of the seven boards used for this project, but users 
 
 The 'code' folder represents the code needed to run this program. In here the 'classes' folder represents the different types of classes used for this program. The 'algorithms' folder represents the 2 different algorithms used for this program, depending on what the user wants to use.
 
-The docs folder consists of the data structure for both the random and the Breadth First algorithm.
+The docs folder consists of the data structure for both the random and the Breadth First algorithm. Both the UML's for these algorithms can be found here.
 
 The solutions folder consists of the csv-files that have been made when running the code.
 
