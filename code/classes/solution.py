@@ -1,5 +1,5 @@
 import csv
-import os, sys
+import os
 
 from pathlib import Path
 
