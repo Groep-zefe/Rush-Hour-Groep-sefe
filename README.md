@@ -26,4 +26,8 @@ There are several steps needed to succesfully run the code:
 
 ## Specifics
 
-Running this program not only gives an output in the terminal, but also creates a csv-file in the 'solutions' tab of this project. For the random and archive algorithm, a csv-file is created every time a solution is found that represents the fewest amount of moves needed to solve the board. For the Breadth First algorithm, a csv-file is created only once for every time you run the needed command in the terminal. Furthermore the program stops for the Breadth First algorithm as soon as a solution has been found, this is different for the random and archive algorithm however. Running this algorithm results in the program constantly trying to solve the game again, looking for faster solutions. It can only be stopped using a keyboard interrupt in the terminal. 
+Running this program not only gives an output in the terminal, but also creates a csv-file in the 'solutions' tab of this project. The csv-file displays the moves made for the particular boards that has been solved. The first line in the file displays which car is being moved for each move, which direction it went (either 1 or -1) and the amount of moves it took to solve the board. The next lines display the letter the car represents as well as the move that was made.
+
+*Random and Archive algorithm*
+
+When running the random and archive algorithm the terminal displays the amount of 
