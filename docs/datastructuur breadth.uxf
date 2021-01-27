@@ -1,4 +1,4 @@
-<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>733</x><y>266</y><w>260</w><h>600</h></coordinates><panel_attributes>breadth_first.py
+<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>781</x><y>266</y><w>260</w><h>600</h></coordinates><panel_attributes>breadth_first.py
 Class Breadth
 --
 init
@@ -41,7 +41,7 @@ won
 traceback
 - when won, make a list of boards that made 
          the win possible
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>413</x><y>264</y><w>260</w><h>190</h></coordinates><panel_attributes>cars.py
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>461</x><y>264</y><w>260</w><h>190</h></coordinates><panel_attributes>cars.py
 Class Cars
 --
 init
@@ -53,14 +53,14 @@ init
 --
 coordinates
 - set all coordinates based on startpoint, 
-         orientation and length</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>414</x><y>494</y><w>260</w><h>120</h></coordinates><panel_attributes>load.py
+         orientation and length</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>462</x><y>494</y><w>260</w><h>120</h></coordinates><panel_attributes>load.py
 Class Load_game
 --
 init
 - pass
 --
 game
-- load the requested board</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>100</x><y>264</y><w>260</w><h>290</h></coordinates><panel_attributes>board.py
+- load the requested board</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>148</x><y>264</y><w>260</w><h>290</h></coordinates><panel_attributes>board.py
 Class Board
 --
 init
@@ -79,7 +79,7 @@ load_board
 
 --
 visualize_board
-- loop over board and print it</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1022</x><y>264</y><w>210</w><h>240</h></coordinates><panel_attributes>moves.py
+- loop over board and print it</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1070</x><y>264</y><w>210</w><h>240</h></coordinates><panel_attributes>moves.py
 Class Winning_moves
 --
 init
@@ -93,7 +93,7 @@ init
 traceback_moves
 - loop over list of boards
 - find which move was made
-- add made move to list</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1263</x><y>268</y><w>300</w><h>290</h></coordinates><panel_attributes>solution.py
+- add made move to list</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1311</x><y>268</y><w>300</w><h>290</h></coordinates><panel_attributes>solution.py
 Class Solution
 --
 init
@@ -112,7 +112,7 @@ save_solution
 
 --
 result_check
-- check results</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>533</x><y>0</y><w>260</w><h>200</h></coordinates><panel_attributes>timer.py
+- check results</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>581</x><y>0</y><w>260</w><h>200</h></coordinates><panel_attributes>timer.py
 Class Timer
 --
 init
@@ -125,4 +125,4 @@ start
 --
 stop
 - stops timer
-- calculates passed time</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>235</x><y>274</y><w>220</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>200;10;10;120</additional_attributes></element><element><id>Relation</id><coordinates><x>295</x><y>454</y><w>150</w><h>70</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>130;50;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>589</x><y>248</y><w>170</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>144;18;10;40</additional_attributes></element><element><id>Relation</id><coordinates><x>639</x><y>248</y><w>120</w><h>280</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>94;18;10;260</additional_attributes></element><element><id>Relation</id><coordinates><x>0</x><y>98</y><w>550</w><h>150</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>530;10;10;130</additional_attributes></element><element><id>Relation</id><coordinates><x>750</x><y>158</y><w>880</w><h>120</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>860;100;10;10</additional_attributes></element></diagram>
+- calculates passed time</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>283</x><y>274</y><w>220</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>200;10;10;120</additional_attributes></element><element><id>Relation</id><coordinates><x>343</x><y>454</y><w>150</w><h>70</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>130;50;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>637</x><y>248</y><w>170</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>144;18;10;40</additional_attributes></element><element><id>Relation</id><coordinates><x>687</x><y>248</y><w>120</w><h>280</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>94;18;10;260</additional_attributes></element><element><id>Relation</id><coordinates><x>48</x><y>98</y><w>550</w><h>150</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>530;10;10;130</additional_attributes></element><element><id>Relation</id><coordinates><x>798</x><y>158</y><w>880</w><h>120</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>860;100;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>240</y><w>100</w><h>30</h></coordinates><panel_attributes>Start timer</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1660</x><y>250</y><w>100</w><h>30</h></coordinates><panel_attributes>Stop timer</panel_attributes><additional_attributes></additional_attributes></element></diagram>
