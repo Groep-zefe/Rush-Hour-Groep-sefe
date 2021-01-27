@@ -1,0 +1,87 @@
+<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>623</x><y>188</y><w>300</w><h>420</h></coordinates><panel_attributes>random.py
+Class Random
+--
+init
+- board size
+- car objects (list)
+- board
+- moves (list)
+- movable cars (dict)
+- count failed moves (int)
+- save used boards (list)
+- random car
+- temporarily save coordinates
+       
+--
+check_board
+- use new car coordinates to try a new board
+- if not a new board, set back previous
+- if 10 times no new board possible, allow steps back
+
+--
+check_move
+- take random empty space
+- find cars to move to that space
+
+--
+move
+- move red car if possible
+- else pick random car
+- change cars coordinates to new location</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>313</x><y>186</y><w>260</w><h>190</h></coordinates><panel_attributes>cars.py
+Class Cars
+--
+init
+- id
+- orientation
+- row
+- col
+- length
+--
+coordinates
+- set all coordinates based on startpoint, 
+         orientation and length</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>314</x><y>416</y><w>260</w><h>120</h></coordinates><panel_attributes>load.py
+Class Load_game
+--
+init
+- pass
+--
+game
+- load the requested board</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>186</y><w>260</w><h>280</h></coordinates><panel_attributes>board.py
+Class Board
+--
+init
+- cars (dict)
+- board_size (int)
+- board (list of lists)
+--
+load_cars
+- open csv file with cars
+- read in coordinates
+
+--
+load_board
+- fill cars in on their places, use id
+- set empty spaces as "_"
+
+--
+visualize_board
+- loop over board and print it</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>983</x><y>190</y><w>260</w><h>290</h></coordinates><panel_attributes>solution.py
+Class Solution
+--
+init
+- game (int)
+- results (list)
+- fastest game (int)
+--
+find_fastest
+- take previous csv files and find fastest solved game
+
+--
+save_solution
+- check if new game is faster
+- create a new csv file with unique name
+- write list of moves into new file
+
+--
+result_check
+- check results</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>135</x><y>196</y><w>220</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>200;10;10;120</additional_attributes></element><element><id>Relation</id><coordinates><x>205</x><y>376</y><w>140</w><h>70</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>120;50;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>489</x><y>200</y><w>150</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>130;60;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>539</x><y>270</y><w>100</w><h>180</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>80;10;10;160</additional_attributes></element></diagram>

@@ -179,8 +179,7 @@ class Breadth():
             previous_board = self.moves_dict[previous_board]
             winning_states.append(previous_board)
         return winning_states
-        
-     
+             
   # prints each board to terminal. Not necessary to get result
     def visualize_board(self):      
         for i in self.board:
