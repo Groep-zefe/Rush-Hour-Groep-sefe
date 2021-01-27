@@ -1,6 +1,6 @@
-import csv
-from sys import argv
 import os
+
+from sys import argv
 
 from code.classes.cars import Cars
 from code.classes.board import Board

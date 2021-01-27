@@ -1,7 +1,6 @@
-import queue
 import random
 import copy
-import math
+
 
 from code.classes.board import Board
 
