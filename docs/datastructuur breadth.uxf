@@ -1,0 +1,128 @@
+<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>733</x><y>256</y><w>300</w><h>600</h></coordinates><panel_attributes>breadth_first.py
+Class Breadth
+--
+init
+- board size
+- car objects (list) 
+- board
+- first board
+- temp board
+- all moves (list)
+- all moves (dict)
+- empty spaces (list)
+- movable cars (dict)
+- parent board
+- queue (list)
+--
+find_spaces
+- set the first board or set back parent board
+- fill list of empty spaces
+
+--
+check_move
+- loop over empty space, find moveable cars
+- add movable cars to list 
+
+--
+move
+- loop over movable cars
+- make new board by moving a car
+- if new board: append it to queue and record move
+
+--
+next_child
+- set board to next board from queue
+
+--
+won 
+- check if red car is on winning coordinates
+
+--
+traceback
+- when won, make a list of boards that made 
+         the win possible
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>413</x><y>264</y><w>260</w><h>190</h></coordinates><panel_attributes>cars.py
+Class Cars
+--
+init
+- id
+- orientation
+- row
+- col
+- length
+--
+coordinates
+- set all coordinates based on startpoint, 
+         orientation and length</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>414</x><y>494</y><w>260</w><h>120</h></coordinates><panel_attributes>load.py
+Class Load_game
+--
+init
+- pass
+--
+game
+- load the requested board</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>100</x><y>264</y><w>260</w><h>290</h></coordinates><panel_attributes>board.py
+Class Board
+--
+init
+- cars (dict)
+- board_size (int)
+- board (list of lists)
+--
+load_cars
+- open csv file with cars
+- read in coordinates
+
+--
+load_board
+- fill cars in on their places, use id
+- set empty spaces as "_"
+
+--
+visualize_board
+- loop over board and print it</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1832</x><y>334</y><w>260</w><h>240</h></coordinates><panel_attributes>moves.py
+Class Winning_moves
+--
+init
+- board_size (int)
+- cars (list)
+- all_boards (list)
+- all_moves (list)
+- self.board (list of lists)
+
+--
+traceback_moves
+- loop over list of boards
+- find which move was made
+- add made move to list</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1053</x><y>258</y><w>260</w><h>290</h></coordinates><panel_attributes>solution.py
+Class Solution
+--
+init
+- game (int)
+- results (list)
+- fastest game (int)
+--
+find_fastest
+- take previous csv files and find fastest solved game
+
+--
+save_solution
+- check if new game is faster
+- create a new csv file with unique name
+- write list of moves into new file
+
+--
+result_check
+- check results</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>533</x><y>0</y><w>260</w><h>200</h></coordinates><panel_attributes>timer.py
+Class Timer
+--
+init
+- start_time
+
+--
+start
+- starts timer
+
+--
+stop
+- stops timer
+- calculates passed time</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>235</x><y>274</y><w>220</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>200;10;10;120</additional_attributes></element><element><id>Relation</id><coordinates><x>295</x><y>454</y><w>150</w><h>70</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>130;50;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>589</x><y>238</y><w>170</w><h>70</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>144;18;10;50</additional_attributes></element><element><id>Relation</id><coordinates><x>639</x><y>238</y><w>120</w><h>290</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>94;18;10;270</additional_attributes></element><element><id>Relation</id><coordinates><x>0</x><y>98</y><w>550</w><h>150</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>530;10;10;130</additional_attributes></element><element><id>Relation</id><coordinates><x>750</x><y>158</y><w>680</w><h>120</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>660;100;10;10</additional_attributes></element></diagram>

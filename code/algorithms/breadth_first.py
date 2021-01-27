@@ -158,7 +158,7 @@ class Breadth:
             self.board = copy.deepcopy(self.parent_board)
             
             # Uses the make_move function to create a the possible boards
-            self.make_move(breakcheck, car_id, car_dir, orientation, car_length)
+            self.make_move(breakcheck, car_id, car_dir, orientation, car_length, self.board)
 
             # Convert board to tuple in tuple
             self.temp_board = tuple(tuple(b) for b in self.board)
