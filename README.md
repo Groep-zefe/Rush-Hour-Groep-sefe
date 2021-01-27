@@ -18,7 +18,7 @@ The 'solutions' folder consists of the csv-files that have been made when runnin
 
 There are several steps needed to succesfully run the code:
 1. Have Python installed on your computer (preferably Python 3).
-2. Download the files from this repository to your computer. You can also clone the repository to your application using 'git clone '
+2. Download the files from this repository to your computer. You can also clone the repository to your application using 'git clone https://github.com/Groep-zefe/Rush-Hour-Groep-sefe.git'
 3. Open the files in your application that is able to run these files (e.g. Visual Studio Code).
 4. Type 'python main.py' in the command bar in the terminal (use 'python3' instead of 'python' if you're running the later Python versions).
 5. After the command 'python main.py' you also have the option to choose a board (represented by a number) you want to be solved. Choosing no number results in the first board being selected automatically. After that you have the option to type in either 'random' or 'breadth' to choose the algorithm you want to use for solving the board. typing neither of these will result in running the random and archive algorithm. A full command in the terminal looks like this for example: 
